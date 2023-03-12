@@ -28,20 +28,8 @@ public class PeopleService {
     public Person findOne(int id) {
         Optional<Person> foundPerson =  peopleRepository.findById(id);
 
-//        return foundPerson.orElse(null);
         return foundPerson.orElseThrow(PersonNotFoundException::new);
     }
-
-//    @Transactional // поменяли конкретно для этого метода
-//    public void save(Person person) {
-//        peopleRepository.save(person);
-//    }
-
-//    @Transactional
-//    public void update(int id, Person updatedPerson) {
-//        updatedPerson.setId(id);
-//        peopleRepository.save(updatedPerson);
-//    }
 
     @Transactional
     public void save(Person person) {
